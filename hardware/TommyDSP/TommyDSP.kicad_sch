@@ -2,9 +2,51 @@
 	(version 20250114)
 	(generator "eeschema")
 	(generator_version "9.0")
-	(uuid 8e0e2dd5-fa84-4cc4-affc-8a947fbe8a29)
+	(uuid "8e0e2dd5-fa84-4cc4-affc-8a947fbe8a29")
 	(paper "A4")
 	(lib_symbols)
+	(sheet
+		(at 25.4 25.4)
+		(size 38.1 88.9)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "4773b4b2-f107-468f-932d-af977ae4468f")
+		(property "Sheetname" "MCU-Core"
+			(at 25.4 24.6884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "MCU-Core.kicad_sch"
+			(at 25.4 114.8846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "TommyDSP"
+				(path "/8e0e2dd5-fa84-4cc4-affc-8a947fbe8a29"
+					(page "2")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")

@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP CD143A-SR05
+D TVS Diode Array 500W Vcc,2xData SOT143
+K
+F https://www.bourns.com/docs/Product-Datasheets/CD143A-SR05_12.pdf
+$ENDCMP
+#
+#End Doc Library
