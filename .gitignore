@@ -1,7 +1,10 @@
 *.*bak
 *.lck
-/hardware/#auto_saved_files#/
+*auto_saved_files#
 fp-info-cache
 *-backups/
 production/
 *.log
+music.h
+*.wav
+*.dfpwm
