@@ -8,3 +8,4 @@ production/
 music.h
 *.wav
 *.dfpwm
+software/Demo/I2S_OUTPUT_DFPWM
