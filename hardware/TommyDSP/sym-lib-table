@@ -3,4 +3,5 @@
   (lib (name "MCU_RaspberryPi_RP2350")(type "KiCad")(uri "${KIPRJMOD}/lib/RP2350A/MCU_RaspberryPi_RP2350.kicad_sym")(options "")(descr ""))
   (lib (name "CD143A-SR05")(type "KiCad")(uri "${KIPRJMOD}/lib/CD143A-SR05/CD143A-SR05.kicad_sym")(options "")(descr ""))
   (lib (name "SS-12D06L5")(type "KiCad")(uri "${KIPRJMOD}/lib/SS-12D06L5/SS-12D06L5.kicad_sym")(options "")(descr ""))
+  (lib (name "ST7735-128x160-TFT-Module")(type "KiCad")(uri "${KIPRJMOD}/lib/ST7735-128x160-TFT-Module/ST7735-128x160-TFT-Module.kicad_sym")(options "")(descr ""))
 )

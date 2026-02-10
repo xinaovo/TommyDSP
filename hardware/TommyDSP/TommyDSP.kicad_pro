@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.5
+          "min_clearance": 0.15
         }
       },
       "diff_pair_dimensions": [
@@ -688,6 +688,18 @@
     [
       "4773b4b2-f107-468f-932d-af977ae4468f",
       "MCU-Core"
+    ],
+    [
+      "8814b990-c81b-4354-b823-a4fa4c56810f",
+      "Audio"
+    ],
+    [
+      "74584beb-e623-4af2-984a-72896a4655db",
+      "Power"
+    ],
+    [
+      "0bcb7ca8-b020-48a0-860c-aef49da61744",
+      "Peripherals"
     ]
   ],
   "text_variables": {}
