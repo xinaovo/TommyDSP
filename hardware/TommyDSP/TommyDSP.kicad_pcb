@@ -41526,6 +41526,17 @@
 			)
 		)
 	)
+	(gr_circle
+		(center 146.725 147.775)
+		(end 146.975 147.775)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "11c32516-7cd5-46bf-bc06-b88add5f4d69")
+	)
 	(gr_line
 		(start 127.6125 142.85)
 		(end 132.8375 142.85)
@@ -41973,7 +41984,7 @@
 		)
 	)
 	(gr_text "MIC"
-		(at 134.3 108.9 270)
+		(at 127.05 101.875 0)
 		(layer "F.SilkS")
 		(uuid "13b35f19-ec86-4f43-b996-9434a8d592d0")
 		(effects
@@ -42264,7 +42275,7 @@
 		)
 	)
 	(gr_text "LINE IN"
-		(at 134.35 122.1 270)
+		(at 136.9 126.75 0)
 		(layer "F.SilkS")
 		(uuid "b0dac680-3670-44db-9b8e-1cb2e79a738c")
 		(effects
@@ -42641,7 +42652,7 @@
 		)
 	)
 	(gr_text "LCD POSITION:\nX:167.8 mm\nY:106.975 mm"
-		(at 212.175 125.25 0)
+		(at 177.575 173.425 0)
 		(layer "Dwgs.User")
 		(uuid "d1ac4896-c99e-4894-b37d-9851cb9695bc")
 		(effects
@@ -46547,6 +46558,15 @@
 		(free yes)
 		(net 2)
 		(uuid "2b8be2e1-5301-4f6a-acff-e4e7022335ca")
+	)
+	(via
+		(at 155.8 144.7)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(free yes)
+		(net 2)
+		(uuid "2bca8aa0-c0d7-47e8-9e4e-bb9446963ab9")
 	)
 	(via
 		(at 190.635 125.77)
