@@ -6,4 +6,5 @@
   (lib (name "ST7735-128x160-TFT-Module")(type "KiCad")(uri "${KIPRJMOD}/lib/ST7735-128x160-TFT-Module/ST7735-128x160-TFT-Module.pretty")(options "")(descr ""))
   (lib (name "TF-01A")(type "KiCad")(uri "${KIPRJMOD}/lib/TF-01A")(options "")(descr ""))
   (lib (name "Project")(type "KiCad")(uri "${KIPRJMOD}/lib/Project.pretty")(options "")(descr ""))
+  (lib (name "SparkFun-Qwiic")(type "KiCad")(uri "${KIPRJMOD}/lib/Sparkfun-Qwiic/SparkFun-Qwiic.pretty")(options "")(descr ""))
 )

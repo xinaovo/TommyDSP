@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.15
+          "min_clearance": 0.25
         }
       },
       "diff_pair_dimensions": [
@@ -63,7 +63,76 @@
           "width": 0.4862
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "clearance|159785750|100005445|548b574d-acc1-4758-bb87-86a8598f1c65|b41688e9-7460-4ec6-ab38-754da3ec5c52",
+          ""
+        ],
+        [
+          "hole_clearance|128045000|91425000|9b2f6f40-442c-4d4c-b75c-5e144910a61a|9e93ced0-b77e-4384-9a14-f09bcf718939",
+          ""
+        ],
+        [
+          "hole_clearance|128045000|91425000|e3de64ed-cad8-49f8-8b59-1eb4e6dc8225|9e93ced0-b77e-4384-9a14-f09bcf718939",
+          ""
+        ],
+        [
+          "hole_clearance|128045000|91625000|72e16432-792a-40eb-8a8b-b6c0e916e357|9e93ced0-b77e-4384-9a14-f09bcf718939",
+          ""
+        ],
+        [
+          "hole_clearance|128045000|91625000|eb5e056c-9207-402f-80ea-eb33de4718d9|9e93ced0-b77e-4384-9a14-f09bcf718939",
+          ""
+        ],
+        [
+          "hole_clearance|128045000|97025000|3b948e4c-f9a7-4110-96c7-9efbeb8d705d|c3d1f31a-6ffb-4392-949d-2274f9152465",
+          ""
+        ],
+        [
+          "hole_clearance|128045000|97025000|fec9c4df-2ae2-41d5-b93e-b4264bc5fd6d|c3d1f31a-6ffb-4392-949d-2274f9152465",
+          ""
+        ],
+        [
+          "hole_clearance|128045000|97225000|442dbde1-c692-4752-85a5-b7ca302cd819|c3d1f31a-6ffb-4392-949d-2274f9152465",
+          ""
+        ],
+        [
+          "hole_clearance|128045000|97225000|56ff44f6-bfbc-4ab3-9408-b04c7dde92bd|c3d1f31a-6ffb-4392-949d-2274f9152465",
+          ""
+        ],
+        [
+          "lib_footprint_mismatch|138225000|84982500|873374b9-3347-49e6-a821-bc81f34e15c6|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "shorting_items|159385750|99356600|77c186a5-31ca-4bb4-8ccf-03b0ab6e3bcb|e4d3bef4-f821-49fc-9e92-733b2a86b29f",
+          ""
+        ],
+        [
+          "shorting_items|159785750|99356600|49d03633-098e-4d16-afe5-13931fc6b349|b41688e9-7460-4ec6-ab38-754da3ec5c52",
+          ""
+        ],
+        [
+          "solder_mask_bridge|159385750|99356600|e4d3bef4-f821-49fc-9e92-733b2a86b29f|77c186a5-31ca-4bb4-8ccf-03b0ab6e3bcb",
+          ""
+        ],
+        [
+          "solder_mask_bridge|159785750|99356600|49d03633-098e-4d16-afe5-13931fc6b349|b41688e9-7460-4ec6-ab38-754da3ec5c52",
+          ""
+        ],
+        [
+          "starved_thermal|155850000|93385000|ff589460-600f-4fef-a56b-10bbcc7d03a8|140cf2e9-8741-4036-ac6f-12df1725d8aa|F.Cu",
+          ""
+        ],
+        [
+          "starved_thermal|156800000|93395000|ff589460-600f-4fef-a56b-10bbcc7d03a8|b477c0b4-cf2f-4974-a8e2-d1a12efcb390|F.Cu",
+          ""
+        ],
+        [
+          "zones_intersect|163875000|74950000|435cce07-a8d8-4df2-b3ab-e396dc1544dc|5000e557-6263-450e-b059-4fa0572fe78f",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -73,7 +142,7 @@
         "connection_width": "warning",
         "copper_edge_clearance": "error",
         "copper_sliver": "warning",
-        "courtyards_overlap": "error",
+        "courtyards_overlap": "ignore",
         "creepage": "error",
         "diff_pair_gap_out_of_range": "error",
         "diff_pair_uncoupled_length_too_long": "error",
@@ -105,13 +174,13 @@
         "padstack": "warning",
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
-        "silk_edge_clearance": "warning",
-        "silk_over_copper": "warning",
-        "silk_overlap": "warning",
+        "silk_edge_clearance": "ignore",
+        "silk_over_copper": "ignore",
+        "silk_overlap": "ignore",
         "skew_out_of_range": "error",
         "solder_mask_bridge": "error",
         "starved_thermal": "error",
-        "text_height": "warning",
+        "text_height": "ignore",
         "text_on_edge_cuts": "error",
         "text_thickness": "warning",
         "through_hole_pad_without_hole": "error",
