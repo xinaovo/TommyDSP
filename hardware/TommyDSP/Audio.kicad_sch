@@ -1602,7 +1602,7 @@
 		)
 		(uuid "0a1fbba8-daf8-44ca-90be-8d7411933b76")
 	)
-	(text "IMPORTANT NOTE:\nFor ES8388, Pin 9,25 are NC, do not install C327,R309,R310. Pin 10 is VREF, install C301,C305, do not install C326,R308.\nFor WM8988, Pin 9 is HPCOM, pin 25 is MODE, install C327,R309,R310. Pin 10 is LCOM, install C326,C308, do not install C301,C305."
+	(text "IMPORTANT NOTE:\nFor ES8388, Pin 9,25 are NC, do not install C327,R309,R310. Pin 10 is VREF, install C301,C305, do not install C326,R308.\nFor WM8988, Pin 9 is HPCOM, pin 25 is MODE, install C327,R309,R310. Pin 10 is LCOM, install C326,C308, do not install C301,C305.\n\nR308,R309 should be placed near audio jack ground, respectively.\nC326,C327 should be placed near CODEC."
 		(exclude_from_sim no)
 		(at 25.146 187.96 0)
 		(effects
