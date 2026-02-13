@@ -3319,8 +3319,8 @@
 				)
 			)
 		)
-		(property "Value" "220u"
-			(at 165.1 107.696 90)
+		(property "Value" "220u 6.3v"
+			(at 167.894 107.696 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6124,8 +6124,8 @@
 				)
 			)
 		)
-		(property "Value" "220u"
-			(at 165.1 114.046 90)
+		(property "Value" "220u 6.3v"
+			(at 167.894 114.046 90)
 			(effects
 				(font
 					(size 1.27 1.27)
