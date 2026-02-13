@@ -5134,6 +5134,17 @@
 		)
 		(uuid "ccddf643-3b0a-4ead-8591-b3a1795d36ff")
 	)
+	(hierarchical_label "HPCOM"
+		(shape passive)
+		(at 93.98 121.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "06bddbb8-5601-4306-8beb-0ac526f17992")
+	)
 	(hierarchical_label "ROTARY_ENCODER_DT"
 		(shape output)
 		(at 158.75 144.78 180)
@@ -5254,6 +5265,17 @@
 			(justify left)
 		)
 		(uuid "53eb3012-a17c-4f2e-b85f-aac894b0b60f")
+	)
+	(hierarchical_label "LCOM"
+		(shape passive)
+		(at 119.38 121.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "58ca9739-8b94-4412-8636-3e87056b6da1")
 	)
 	(hierarchical_label "LCD_BL"
 		(shape input)
@@ -6398,73 +6420,6 @@
 			(project "TommyDSP"
 				(path "/8e0e2dd5-fa84-4cc4-affc-8a947fbe8a29/0bcb7ca8-b020-48a0-860c-aef49da61744"
 					(reference "#PWR0507")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 93.98 121.92 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1d0129f1-0215-4bd7-88a3-55a7d67361de")
-		(property "Reference" "#PWR0524"
-			(at 100.33 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 97.79 121.9199 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 93.98 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 93.98 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 93.98 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d8c84a2d-1ab0-49eb-a007-09533ba7605b")
-		)
-		(instances
-			(project "TommyDSP"
-				(path "/8e0e2dd5-fa84-4cc4-affc-8a947fbe8a29/0bcb7ca8-b020-48a0-860c-aef49da61744"
-					(reference "#PWR0524")
 					(unit 1)
 				)
 			)
@@ -11183,73 +11138,6 @@
 			(project "TommyDSP"
 				(path "/8e0e2dd5-fa84-4cc4-affc-8a947fbe8a29/0bcb7ca8-b020-48a0-860c-aef49da61744"
 					(reference "#PWR0511")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 119.38 121.92 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e2a13d3d-ead6-4850-9973-e22a5d27ffe9")
-		(property "Reference" "#PWR0535"
-			(at 125.73 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 123.19 121.9199 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 119.38 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 119.38 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 119.38 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "27ba930c-3f95-4c74-a5d3-db0fb5c16d33")
-		)
-		(instances
-			(project "TommyDSP"
-				(path "/8e0e2dd5-fa84-4cc4-affc-8a947fbe8a29/0bcb7ca8-b020-48a0-860c-aef49da61744"
-					(reference "#PWR0535")
 					(unit 1)
 				)
 			)

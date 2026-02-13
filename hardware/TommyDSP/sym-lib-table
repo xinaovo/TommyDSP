@@ -5,4 +5,5 @@
   (lib (name "SS-12D06L5")(type "KiCad")(uri "${KIPRJMOD}/lib/SS-12D06L5/SS-12D06L5.kicad_sym")(options "")(descr ""))
   (lib (name "ST7735-128x160-TFT-Module")(type "KiCad")(uri "${KIPRJMOD}/lib/ST7735-128x160-TFT-Module/ST7735-128x160-TFT-Module.kicad_sym")(options "")(descr ""))
   (lib (name "SparkFun-Qwiic")(type "KiCad")(uri "${KIPRJMOD}/lib/Sparkfun-Qwiic/SparkFun-Qwiic.kicad_sym")(options "")(descr ""))
+  (lib (name "Project")(type "KiCad")(uri "${KIPRJMOD}/lib/Project.kicad_sym")(options "")(descr ""))
 )
