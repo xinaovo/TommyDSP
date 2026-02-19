@@ -2631,7 +2631,7 @@
 		)
 		(uuid "5ffcc2c2-5c46-4703-9a13-da366b5274ad")
 	)
-	(text "Optional Secondary flash or PSRAM (U201), using the second chip select (XIP_SS_N[1]) on GPIO0.\nN.B. Pull-up R204 will be required as GPIOs default to pull-downs at power-up."
+	(text "Optional Secondary flash or PSRAM (U201), using the second chip select (XIP_SS_N[1]) on GPIO0.\nN.B. Pull-up R202 will be required as GPIOs default to pull-downs at power-up."
 		(exclude_from_sim no)
 		(at 15.494 197.104 0)
 		(effects

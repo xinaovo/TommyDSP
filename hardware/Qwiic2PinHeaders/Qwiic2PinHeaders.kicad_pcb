@@ -1667,8 +1667,8 @@
 			(justify bottom mirror)
 		)
 	)
-	(gr_text "Quiic\nto\nPinHeaders"
-		(at 145 46.1 0)
+	(gr_text "Qwiic\nto\nPinHeaders"
+		(at 145.05 45.85 0)
 		(layer "B.SilkS")
 		(uuid "ee2789f9-4ddd-4fee-989a-d6423aa7e811")
 		(effects
