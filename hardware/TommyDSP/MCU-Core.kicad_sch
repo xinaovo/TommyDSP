@@ -2974,6 +2974,16 @@
 	)
 	(wire
 		(pts
+			(xy 137.16 50.8) (xy 147.32 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b2698a9-5207-4d08-8c85-69e618fddae4")
+	)
+	(wire
+		(pts
 			(xy 275.59 22.86) (xy 275.59 21.59)
 		)
 		(stroke
@@ -3671,16 +3681,6 @@
 			(type default)
 		)
 		(uuid "7bc0c608-01b6-48a1-afd9-855a395394bf")
-	)
-	(wire
-		(pts
-			(xy 137.16 50.8) (xy 147.32 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7d74e54d-e37e-4b40-8e5c-1eb8ccae4353")
 	)
 	(wire
 		(pts
@@ -4693,7 +4693,7 @@
 		(uuid "b9df6986-cefd-4732-88e8-0cff6e5f18ad")
 	)
 	(label "VREG_AVDD"
-		(at 137.795 50.8 0)
+		(at 137.16 50.8 0)
 		(effects
 			(font
 				(size 1.27 1.27)
