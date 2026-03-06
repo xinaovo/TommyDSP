@@ -1,0 +1,305 @@
+#pragma once
+#include "AudioTools/CoreAudio/Buffers.h"
+#include "AudioTools/CoreAudio/AudioTypes.h"
+#include "AudioTools/CoreAudio/BaseConverter.h"
+#include <deque>
+
+#ifdef ARDUINO
+#include "Stream.h"
+#endif
+
+#ifdef USE_STREAM_WRITE_OVERRIDE
+#define STREAM_WRITE_OVERRIDE override
+#else
+#define STREAM_WRITE_OVERRIDE
+#endif
+
+#ifdef USE_STREAM_READ_OVERRIDE
+#define STREAM_READ_OVERRIDE override
+#else
+#define STREAM_READ_OVERRIDE
+#endif
+
+#ifdef USE_STREAM_READCHAR_OVERRIDE
+#define STREAM_READCHAR_OVERRIDE override
+#else
+#define STREAM_READCHAR_OVERRIDE
+#endif
+
+using namespace std;
+
+namespace audio_tools {
+
+/**
+ * @brief Base class for all Streams. It relies on write(const uint8_t *buffer,
+ * size_t size) and readBytes(uint8_t *buffer, size_t length).
+ * @author Phil Schatzmann and Smrethi Shunmuga
+ * @copyright GPLv3
+ */
+class BaseStream : public Stream {
+};
+
+/**
+ * @brief Base class for all Audio Streams. It support the boolean operator to
+ * test if the object is ready with data
+ * @author Phil Schatzmann
+ * @copyright GPLv3
+ */
+class AudioStream : public BaseStream, public AudioInfoSupport, public AudioInfoSource {
+};
+
+
+/**
+ * @brief Provides data from a concatenation of Streams. Please note that the
+ * provided Streams can be played only once! You will need to reset them (e.g.
+ * moving the file pointer to the beginning) and read them back if you want to
+ * process them a second time. The default timeout on the available() method is
+ * set to 0. This might be too small if you use e.g. a URLStream.
+ * @ingroup io
+ * @author Phil Schatzmann
+ * @copyright GPLv3
+ */
+class CatStream : public BaseStream {
+};
+
+/**
+ * @brief The Arduino Stream which provides silence and simulates a null device
+ * when used as audio target or audio source
+ * @ingroup io
+ * @author Phil Schatzmann
+ * @copyright GPLv3
+ */
+class NullStream : public BaseStream {
+};
+
+
+/**
+ * @brief Stream class which stores the data in a temporary queue buffer.
+ * The queue can be consumed e.g. by a callback function by calling readBytes();
+ * @ingroup io
+ * @author Phil Schatzmann
+ * @copyright GPLv3
+ */
+template <class T>
+class QueueStream : public BaseStream {
+};
+
+
+#ifndef SWIG
+
+struct DataNode {
+};
+
+/**
+ * @brief MemoryStream which is written and read using the internal RAM. For each write the data is allocated
+ * on the heap.
+ * @ingroup io
+ * @author Phil Schatzmann
+ * @copyright GPLv3
+ */
+class DynamicMemoryStream : public BaseStream {
+public:
+
+  DynamicMemoryStream() = default;
+
+  DynamicMemoryStream(bool isLoop, int defaultBufferSize=DEFAULT_BUFFER_SIZE, int maxRecords = 0 ) {
+    this->default_buffer_size = defaultBufferSize;
+    is_loop = isLoop;
+    this->max_records = maxRecords;
+  }
+  // Assign values from ref, clearing the original ref
+  void assign(DynamicMemoryStream &ref){
+    audio_list.swap(ref.audio_list);
+    it = ref.it;
+    total_available=ref.total_available;
+    default_buffer_size = ref.default_buffer_size;
+    alloc_failed = ref.alloc_failed;;
+    is_loop = ref.is_loop;
+    ref.clear();
+  }
+
+  /// Intializes the processing
+  virtual bool begin() override {
+    clear();
+    temp_audio.resize(default_buffer_size);
+    return true;
+  }
+
+  virtual void end() override {
+    clear();
+  }
+
+  /// Automatically rewinds to the beginning when reaching the end
+  virtual void setLoop(bool loop){
+    is_loop = loop;
+  }
+
+  /// Enable or disable consuming reads (remove records as they are read)
+  void setConsumeOnRead(bool consume){
+    consume_on_read = consume;
+  }
+
+  void clear() {
+ for(auto node: audio_list){
+    delete node;
+ }
+ audio_list.clear();
+
+    temp_audio.reset();
+    total_available = 0;    
+    read_pos = 0;
+    alloc_failed = false;
+    rewind();
+  }
+
+  size_t size(){
+    return total_available;
+  }
+
+  /// Sets the read position to the beginning
+  void rewind() {
+    it = 0;
+    read_pos = 0;
+  }
+
+  virtual size_t write(const uint8_t *data, size_t len) override {
+    LOGI("write: %d / records: %d (max %d)",(int)len, size ,max_records);
+    DataNode *p_node = new DataNode((void*)data, len);
+    if (p_node->data){
+      alloc_failed = false;
+      total_available += len;
+      audio_list.push_back(p_node);
+      return len;
+
+    } 
+    alloc_failed = true;
+    return 0;
+  }
+
+  virtual int availableForWrite() override {
+    // check for max_records
+    if (max_records > 0 && (int)audio_list.size() >= max_records) {
+      return 0;
+    }
+    return alloc_failed ? 0 : default_buffer_size;
+  } 
+
+  virtual int available() override {
+    if (it >= (int)audio_list.size()){
+      if (is_loop) rewind();
+      if (it == (int)audio_list.end()) {
+        return 0;
+      }
+    }
+    return audio_list[it]->len;
+  }
+
+  virtual size_t readBytes(uint8_t *data, size_t len) override {
+    // provide unprocessed data
+    if (temp_audio.available() > 0){
+      size_t result = temp_audio.readArray(data, len);
+      read_pos += result;
+      return result;
+    }
+
+    // We have no more data
+    if (it>=(int)audio_list.size()){
+      if (is_loop){
+        rewind();
+      } else {
+        // stop the processing
+        return 0;
+      }
+    }
+
+    // provide data from next node
+    DataNode *p_node = *it;
+    size_t node_len = p_node->len;
+    size_t result_len = node_len < len ? node_len : len;
+    if (result_len > 0) {
+      memcpy(data, &p_node->data[0], result_len);
+    }
+    // save unprocessed remainder to temp buffer (to be returned on next call)
+    if (node_len > result_len) {
+      size_t remainder_len = node_len - result_len;
+      temp_audio.resize((int)remainder_len);
+      uint8_t *start = &p_node->data[result_len];
+      temp_audio.writeArray(start, remainder_len);
+    }
+    // advance and optionally consume the node
+    if (consume_on_read) {
+     audio_list.pop_front();
+     delete p_node;
+        if (total_available >= node_len) {
+          total_available -= node_len;
+        } else {
+          total_available = 0;
+        }
+    } else {
+      ++it;
+    }
+    read_pos += result_len;
+    return result_len;
+  }
+
+  deque<DataNode*> &list() {
+    return audio_list;
+  }
+
+  /// @brief  Post processing after the recording. We add a smooth transition at the beginning and at the end
+  /// @tparam T 
+  /// @param factor 
+  template<typename T>
+  void postProcessSmoothTransition(int channels, float factor = 0.01, int remove=0){
+      if (remove>0){
+        for (int j=0;j<remove;j++){
+          DataNode* node = nullptr;
+          audio_list.pop_front(node);
+          if (node!=nullptr) delete node;
+          node = nullptr;
+          audio_list.pop_back(node);
+          if (node!=nullptr) delete node;
+        }
+      }
+
+      // Remove popping noise
+      SmoothTransition<T> clean_start(channels, true, false, factor);
+      auto first = *list().begin();   
+      if (first!=nullptr){ 
+        clean_start.convert(&(first->data[0]),first->len);
+      }
+
+      SmoothTransition<T> clean_end(channels, false, true, factor);
+      auto last = * (--(list().end()));
+      if (last!=nullptr){
+        clean_end.convert(&(last->data[0]),last->len);  
+      }  
+  }
+
+  /// Returns the current read position
+  size_t getPos() {
+    return read_pos;
+  }
+
+  void setMaxRecords(int max_records){
+    this->max_records = max_records;
+  } 
+
+
+protected:
+  deque<DataNode*> audio_list;
+  int it = 0;
+  size_t total_available = 0;
+  size_t read_pos = 0; 
+  int default_buffer_size=DEFAULT_BUFFER_SIZE;
+  int max_records = 0;
+  bool alloc_failed = false;
+  RingBuffer<uint8_t> temp_audio{0};
+  bool is_loop = false;
+  bool consume_on_read = false;
+
+};
+
+#endif
+
+}  // namespace audio_tools
