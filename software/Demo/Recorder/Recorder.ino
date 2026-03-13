@@ -31,14 +31,18 @@ NumberFormatConverterStreamT<int32_t, int16_t> in_conv(pitch_shifter);
 
 StreamCopy copier; // copies data
 
+uint8_t record_status = false; //0: stop 1: play, 2:record
+
 void record_start(){
   Serial.println("Recording...");
   recording.begin(); // clear data
+  record_status = 2;
   copier.begin(recording, i2s); // from i2s mic to memory 
 }
 
 void play_start(){
   Serial.println("Playing...");
+  record_status = 1;
   copier.begin(in_conv, recording);  // from memory to i2s dac
 }
 

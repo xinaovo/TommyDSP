@@ -53,10 +53,10 @@ void play_start(){
   copier.begin(in_conv, recording);  // from memory to i2s dac
 }
 
-void stop_play(){
-  Serial.println("Stop.");
-  copier.end();
-}
+// void stop_play(){
+//   Serial.println("Stop.");
+//   copier.end();
+// }
 
 void setup(void) { 
   //initialize LED and button pin
@@ -138,12 +138,15 @@ void loop() {
   copier.copy();
 }
 
+
+void draw_animation(){
+  tft.fillScreen(ST77XX_RED);
+    for (int i = 0; i < 5; i++) {
+      tft.drawCircle(63, 79, 35 + (int) (pow(sin(millis() / 1e3 * 6.28 * 1.0 + i * 0.15) * 0.5 + 0.5, 3.0) * 15.0), ST77XX_BLACK);
+    }
+}
+
 //Loop on Core 1(Graphics)
 void loop1(){
-  tft.fillScreen(ST77XX_BLACK);
-  delay(500);
-  tft.fillScreen(ST77XX_WHITE);
-  delay(500);
-  
-
+  draw_animation();
 }

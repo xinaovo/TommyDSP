@@ -9,7 +9,7 @@
 
 const int pitch_shift_buffer_size = 5000;
 const float pitch_shift_ratio = 2; 
-AudioInfo info(48000, 2, 32);
+AudioInfo info(16000, 2, 32);
 
 I2SStream i2s;
 NumberFormatConverterStreamT<int16_t, int32_t> out_conv(i2s);
